@@ -1,0 +1,37 @@
+# Core (required)
+rich>=13.0
+prompt_toolkit>=3.0
+pygments>=2.0
+
+# LLM providers (install whichever you actually use - both are optional,
+# imported lazily; coder3.py runs fine with only one installed)
+openai>=1.0
+google-generativeai>=0.5
+
+# --- AST / CST / tree-sitter (this upgrade) --------------------------------
+# repo_intel.py works without these (falls back to the regex/ast-based
+# parsers for python/css/html, and returns "unavailable" for
+# semantic-navigation on any language tree-sitter would have covered), but
+# tree-sitter is now the PRIMARY parser for javascript/typescript/tsx (see
+# repo_intel.py's _parse_file docstring for why), so install these for full
+# accuracy on JS/TS/TSX repos:
+tree-sitter>=0.22
+tree-sitter-python>=0.23
+tree-sitter-javascript>=0.23
+tree-sitter-typescript>=0.23
+tree-sitter-css>=0.23
+tree-sitter-html>=0.23
+
+# Optional: additional languages repo_intel.py also recognizes
+# (go/java/rust/ruby/c/cpp) if you want tree-sitter symbol extraction for
+# those too - not required for the html/css/js/ts/python scope of this
+# upgrade.
+# tree-sitter-go>=0.23
+# tree-sitter-rust>=0.23
+# tree-sitter-java>=0.23
+# tree-sitter-c>=0.23
+# tree-sitter-cpp>=0.23
+# tree-sitter-ruby>=0.23
+
+# Repo intelligence (dependency graph / PageRank over the call graph)
+networkx>=3.0
